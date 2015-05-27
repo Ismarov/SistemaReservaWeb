@@ -1,0 +1,56 @@
+package servlets.paciente;
+
+import java.io.IOException;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import negocio.PacienteStub;
+import negocio.PacienteStub.BuscarHoraAps;
+import negocio.PacienteStub.BuscarHoraApsResponse;
+
+/**
+ * Servlet implementation class BuscarHoraAps
+ */
+public class SBuscarHoraAps extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SBuscarHoraAps() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		@SuppressWarnings("deprecation")
+		Date f1 = new Date(request.getParameter("fecha1"));
+		@SuppressWarnings("deprecation")
+		Date f2 = new Date(request.getParameter("fecha2"));
+		int idMedico = Integer.parseInt(request.getParameter("idMedico"));
+		
+		PacienteStub pSt = new PacienteStub();
+		
+		BuscarHoraAps stBuscarHoraAps = new BuscarHoraAps();
+		
+		stBuscarHoraAps.setFecha1(f1);
+		stBuscarHoraAps.setFecha2(f2);
+		stBuscarHoraAps.setIdMedico(idMedico);
+		
+		BuscarHoraApsResponse buscarHoraApsResp = pSt.buscarHoraAps(stBuscarHoraAps);
+		
+		String s = buscarHoraApsResp.get_return();
+		
+		//request.setAttribute("HoraAPS", s);
+		
+		//getServletContext().getRequestDispatcher("/pHoraAps.jsp").forward(request, response);
+		response.getWriter().append(s);
+	}
+}
