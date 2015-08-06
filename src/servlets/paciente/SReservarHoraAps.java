@@ -50,9 +50,7 @@ public class SReservarHoraAps extends HttpServlet {
 
 		String s = reservarHoraApsResp.get_return();
 
-		request.setAttribute("reservahoraAps", s);
-
-		getServletContext().getRequestDispatcher("/pReservarAPS.jsp").forward(request, response);
+		response.getWriter().append(s);
 	}
 
 }

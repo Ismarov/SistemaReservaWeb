@@ -43,8 +43,7 @@ public class SObtenerMedicosMasSolicitados extends HttpServlet {
 		ObtenerMedicosMasSolicitadosResponse obMedMasResponse = dst.obtenerMedicosMasSolicitados(stObtenerMedMas);
 		
 		String s= obMedMasResponse.get_return();
-		   request.setAttribute("medicosmas", s);
-		   getServletContext().getRequestDispatcher("/dMedicosMas.jsp").forward(request, response);
+		response.getWriter().append(s);
 	}
 
 }

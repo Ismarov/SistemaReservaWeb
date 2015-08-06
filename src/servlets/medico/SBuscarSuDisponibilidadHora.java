@@ -47,9 +47,7 @@ public class SBuscarSuDisponibilidadHora extends HttpServlet {
 		BuscarSuDisponibilidadHoraResponse obDispHorResponse = mst.buscarSuDisponibilidadHora(stObtenerDispHor);
 
 		String s = obDispHorResponse.get_return();
-		request.setAttribute("obDispHor", s);
-		getServletContext().getRequestDispatcher("/mBuscarDisp.jsp")
-				.forward(request, response);
+		response.getWriter().append(s);
 	}
 
 }

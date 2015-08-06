@@ -47,10 +47,7 @@ public class SObtenerPorcentajeOcupacionBox extends HttpServlet {
 		ObtenerPorcentajeOcupacionBoxResponse obtenerPorcBoxResp = dSt.obtenerPorcentajeOcupacionBox(stObtenerPorBox);
 		
 		int s = obtenerPorcBoxResp.get_return();
-		request.setAttribute("obtenerPorBox", s);
-		getServletContext().getRequestDispatcher("/dObtenerPorBox.jsp").forward(request, response);
-		
-		
+		response.getWriter().append(String.valueOf(s));
 		
 		
 	}

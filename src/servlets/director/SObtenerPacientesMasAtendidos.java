@@ -24,7 +24,6 @@ public class SObtenerPacientesMasAtendidos extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -45,8 +44,7 @@ public class SObtenerPacientesMasAtendidos extends HttpServlet {
 
 		String s = obPacMasResponse.get_return();
 		request.setAttribute("pacientemas", s);
-		getServletContext().getRequestDispatcher("/dPacienteMas.jsp").forward(
-				request, response);
+		response.getWriter().append(s);
 	}
 
 }
